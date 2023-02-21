@@ -19,9 +19,12 @@ public class Fish : MonoBehaviour
     void Update()
     {
         FishSwim();
-        FishRotation();
-
         
+    }
+
+    private void FixedUpdate() 
+    {
+        FishRotation();
     }
 
     void FishSwim()
