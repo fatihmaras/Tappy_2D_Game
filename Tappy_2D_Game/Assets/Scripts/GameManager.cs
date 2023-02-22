@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static Vector2 bottomLeft;
+    public static bool gameOver;
+    public GameObject gameOverPanel;
 
     private void Awake() 
     {
@@ -15,7 +18,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameOver=false;
+
+    }
+
+    public void RestartBtn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GameOver()
+    {
+        gameOver=true;
+        gameOverPanel.SetActive(true);
+
     }
 
     // Update is called once per frame

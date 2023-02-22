@@ -29,14 +29,17 @@ public class LeftMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position=new Vector2(transform.position.x - speed*Time.deltaTime, transform.position.y);
+        if(GameManager.gameOver==false)
+        {
+            transform.position=new Vector2(transform.position.x - speed*Time.deltaTime, transform.position.y);
+        }
 
         if(gameObject.CompareTag("Ground"))
         {
-         if(transform.position.x<= -grondWidth)
-         {
-           transform.position=new Vector2 (transform.position.x + 2 * grondWidth , transform.position.y);
-         }           
+            if(transform.position.x<= -grondWidth)
+            {
+             transform.position=new Vector2 (transform.position.x + 2 * grondWidth , transform.position.y);
+            }           
         }
 
         else if (gameObject.CompareTag("Obstacle"))    
