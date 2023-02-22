@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     public static Vector2 bottomLeft;
     public static bool gameOver;
     public GameObject gameOverPanel;
+    public GameObject getReady;
+
+    public static bool gameStarted;
+    public static int gameScore;
+    public GameObject score;
+
 
     private void Awake() 
     {
@@ -19,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameOver=false;
+        gameStarted=false;
 
     }
 
@@ -27,10 +34,20 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void GameHasStarted()
+    {
+        gameStarted=true;
+        getReady.SetActive(false);
+
+    }
+
     public void GameOver()
     {
         gameOver=true;
         gameOverPanel.SetActive(true);
+        score.SetActive(false);
+        gameScore = score.GetComponent<Score>().GetScore();
+        
 
     }
 
